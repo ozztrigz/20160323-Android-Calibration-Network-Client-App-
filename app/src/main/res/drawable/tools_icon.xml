@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_activated="true">
+    <bitmap android:src="@drawable/ic_action_instruments"
+        android:tint="@color/primary_text_material_light" />
+</item>
+
+<item android:drawable="@drawable/ic_action_instruments"/>
+</selector>

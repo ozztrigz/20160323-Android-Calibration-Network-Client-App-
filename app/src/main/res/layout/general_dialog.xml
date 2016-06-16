@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_view"
+    android:padding="20dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/taskSearchScrollView" >
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="0dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cal_due_single_instructions"
+                android:id="@+id/dialog_message"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/cn_green"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/instrumentCalNameValue"
+                android:text=""
+                android:layout_marginBottom="10dp"
+                android:textColor="#2d2d2d"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Serial :"
+                android:id="@+id/instrumentSerial"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/cn_green"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/instrumentCalSerialValue"
+                android:layout_marginBottom="10dp"
+                android:textColor="#2d2d2d"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Asset ID :"
+                android:id="@+id/instrumentAsset"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/cn_green"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/instrumentCalAssetValue"
+                android:layout_marginBottom="10dp"
+                android:textColor="#2d2d2d"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Calibration Due on :"
+                android:id="@+id/instrumentDueDate"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/cn_green"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/instrumentCalDueDateValue"
+                android:layout_marginBottom="20dp"
+                android:textColor="#2d2d2d"/>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Request Calibration"
+                    android:background="@drawable/green_button"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:id="@+id/dialogRequestCalibrationButton" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/cancel_button_shape"
+                    android:text="cancel"
+                    android:id="@+id/dialogRequestCalibrationCancelButton" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@drawable/bg_pattern"
+    tools:context="ca.on.tradeport.calibrationnetwork.ExistingUserRegistration"
+    tools:showIn="@layout/activity_existing_user_registration">
+
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" >
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:id="@+id/cn_logo_registration"
+                android:src="@drawable/cn_logo_white"
+
+                android:layout_marginTop="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To validate your account, we need to find one of your existing calibration records. Find your calibration certificate and fill out the information below"
+                android:id="@+id/registration_title"
+                android:layout_below="@+id/cn_logo_registration"
+                android:textColor="#fff"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/validate_cal_certificate"
+                    android:hint="certificate number"
+                    android:background="@drawable/white_textfield"
+                    android:padding="10dp"
+                    android:textColorHint="#CCCCCC"
+                    android:layout_marginRight="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/primary_text_material_light" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/white_textfield"
+                    android:ems="10"
+                    android:id="@+id/validate_cal_serial"
+                    android:hint="Test Instrument Serial Number"
+                    android:padding="10dp"
+                    android:textColorHint="#CCCCCC"
+                    android:textColor="@color/primary_text_material_light"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Validate Record"
+                android:id="@+id/validateRecordButton"
+                android:layout_marginTop="20dp"
+                android:textAllCaps="false"
+                android:background="@drawable/green_button"
+                android:textColor="#ffffff"
+                android:layout_centerHorizontal="true"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/record"
+        android:background="@drawable/white_view"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/recordLabel"
+            android:text="Record Found!"
+            android:textSize="20sp"
+            android:textColor="@color/primary_text_material_light"
+            android:layout_marginTop="20dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+
+            <TextView
+                android:layout_weight="0.25"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/cn_green"
+                android:text="name:"
+                android:layout_marginTop="10dp" />
+            <TextView
+                android:layout_weight="0.75"
+                android:layout_width="0dp"
+                android:textSize="14sp"
+                android:id="@+id/recordName"
+                android:layout_height="wrap_content"
+                android:text="sample text"
+                android:layout_marginBottom="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+
+            <TextView
+                android:layout_weight="0.25"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/cn_green"
+                android:textSize="14sp"
+                android:text="username:"/>
+
+            <TextView
+                android:layout_weight="0.75"
+                android:layout_width="0dp"
+                android:textSize="14sp"
+                android:id="@+id/recordUsername"
+                android:layout_height="wrap_content"
+                android:text="sample text"
+                android:layout_marginBottom="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:layout_weight="0.25"
+                android:layout_width="0dp"
+                android:textColor="@color/cn_green"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="password:"/>
+
+            <TextView
+                android:layout_weight="0.75"
+                android:layout_width="0dp"
+                android:textSize="14sp"
+                android:id="@+id/recordPassword"
+                android:layout_height="wrap_content"
+                android:text="sample text"
+                android:layout_marginBottom="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dismiss"
+                android:id="@+id/dismissButton"
+                android:textAllCaps="false"
+                android:background="@drawable/cancel_button_shape"
+                android:textColor="#ffffff"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="10dp"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="login with these credentials"
+                android:id="@+id/existingUserLoginButton"
+                android:textAllCaps="false"
+                android:background="@drawable/green_button"
+                android:textColor="#ffffff"
+                android:layout_centerHorizontal="true"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/spinnerContainer"
+        android:alpha="0"
+        android:visibility="gone">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_grey"
+            android:alpha="0.5"
+            android:visibility="gone">
+
+        </RelativeLayout>
+
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+
+
+                <ca.on.tradeport.calibrationnetwork.ProgressWheel
+                    android:id="@+id/progressBarTwo"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    ProgressWheel:pwTextColor="#222222"
+                    ProgressWheel:pwTextSize="14sp"
+                    ProgressWheel:pwRimColor="#44000000"
+                    ProgressWheel:pwBarLength="60dp"
+                    ProgressWheel:pwBarColor="@color/cn_green"
+                    ProgressWheel:pwBarWidth="10dp"
+                    ProgressWheel:pwRimWidth="10dp"
+                    ProgressWheel:pwSpinSpeed="3dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

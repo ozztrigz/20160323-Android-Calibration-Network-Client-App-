@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_view"
+    android:padding="20dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/taskSearchScrollView" >
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="0dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fill out either of these fields to find a specific task"
+                android:id="@+id/dialog_message"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/cn_green"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/TaskSearchDialogCertificateEditText"
+                android:background="@drawable/white_textfield"
+                android:hint="Certificate"
+                android:textColorHint="@color/cn_green"
+                android:textColor="@color/primary_text_material_light"
+                android:layout_marginBottom="20dp"
+                android:textSize="14sp"
+                android:padding="10dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/TaskSearchDialogSerialEditText"
+                android:hint="Serial Number"
+                android:textColor="@color/primary_text_material_light"
+                android:textColorHint="@color/cn_green"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/white_textfield"
+                android:layout_marginBottom="20dp"
+                android:textSize="14sp"
+                android:padding="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TaskSearchDialogPurchaseOrderEditText"
+            android:hint="Purchase Order Number"
+            android:textColor="@color/primary_text_material_light"
+            android:textColorHint="@color/cn_green"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/white_textfield"
+            android:layout_marginBottom="20dp"
+            android:textSize="14sp"
+            android:padding="10dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date Completed Range (From)"
+            android:id="@+id/date_dialog_message_from"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/cn_green"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:background="@drawable/cancel_button_shape"
+            android:id="@+id/date_dialog_from"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="#ffffff"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date Completed Range (To)"
+            android:id="@+id/date_dialog_message_to"
+            android:layout_marginBottom="5dp"
+
+            android:textColor="@color/cn_green"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:id="@+id/date_dialog_to"
+            android:background="@drawable/cancel_button_shape"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="#ffffff"/>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="search"
+                    android:background="@drawable/green_button"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:id="@+id/dialogJobSearchButton" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/cancel_button_shape"
+                    android:text="cancel"
+                    android:id="@+id/dialogJobSearchCancelButton" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ca.on.tradeport.calibrationnetwork.CalDueList"
+    android:background="@drawable/bg_pattern"
+    tools:showIn="@layout/activity_cal_due_list">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cal_due_instructions"
+        android:id="@+id/settingsInsctructionsText"
+        android:textColor="@color/foreground_material_light"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/settingsInsctructionsText"
+        android:id="@+id/listcontainer"
+        android:layout_above="@+id/requestAllCalibrationButton"
+        android:background="@drawable/white_button">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/newList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/green_button"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp"
+        android:id="@+id/requestAllCalibrationButton"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="request calibration"
+            android:textColor="@color/primary_text_default_material_light"
+            android:id="@+id/feedbackButtonText"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/spinnerContainer"
+        android:alpha="0">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_grey"
+            android:alpha="0.5">
+
+        </RelativeLayout>
+
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+
+
+                <ca.on.tradeport.calibrationnetwork.ProgressWheel
+                    android:id="@+id/progressBarTwo"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    ProgressWheel:pwTextColor="#222222"
+                    ProgressWheel:pwTextSize="14sp"
+                    ProgressWheel:pwRimColor="#44000000"
+                    ProgressWheel:pwBarLength="60dp"
+                    ProgressWheel:pwBarColor="@color/cn_green"
+                    ProgressWheel:pwBarWidth="10dp"
+                    ProgressWheel:pwRimWidth="10dp"
+                    ProgressWheel:pwSpinSpeed="3dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

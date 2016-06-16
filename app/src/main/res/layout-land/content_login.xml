@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:background="@drawable/bg_pattern"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ca.on.tradeport.calibrationnetwork.Login"
+    tools:showIn="@layout/activity_login">
+
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" >
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cn_logo"
+                android:src="@drawable/cn_logo_white"
+
+                android:layout_marginTop="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+
+                android:scaleType="fitCenter" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/username"
+                android:layout_marginTop="20dp"
+                android:hint="username"
+                android:background="@drawable/white_textfield"
+                android:padding="10dp"
+                android:textColorHint="#CCCCCC"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:textSize="14sp"
+                android:textColor="@color/primary_text_material_light" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:inputType="textPassword"
+                android:background="@drawable/white_textfield"
+                android:ems="10"
+                android:id="@+id/password"
+                android:layout_marginTop="10dp"
+                android:hint="password"
+                android:padding="10dp"
+                android:textColorHint="#CCCCCC"
+                android:textColor="@color/primary_text_material_light"
+                android:layout_marginRight="80dp"
+                android:layout_marginLeft="80dp"
+                android:textSize="14sp" />
+
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="remember me"
+                android:id="@+id/rememberMeCheckbox"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/cn_green" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <Button
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="login"
+                        android:id="@+id/button"
+                        android:layout_marginTop="20dp"
+                        android:textAllCaps="false"
+                        android:background="@drawable/green_button"
+                        android:textColor="#ffffff"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="16sp"
+                        android:layout_gravity="center_horizontal"
+                        android:onClick="login"
+                        android:layout_marginRight="20dp" />
+
+                    <Button
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="register"
+                        android:id="@+id/toRegistration"
+                        android:textAllCaps="false"
+                        android:background="@null"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:textColor="#6FBE44"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textSize="16sp"
+                        android:layout_gravity="center_horizontal" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/spinnerContainer"
+        android:alpha="0"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_grey"
+            android:alpha="0.5">
+
+        </RelativeLayout>
+
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+
+
+                <ca.on.tradeport.calibrationnetwork.ProgressWheel
+                    android:id="@+id/progressBarTwo"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    ProgressWheel:pwTextColor="#222222"
+                    ProgressWheel:pwTextSize="14sp"
+                    ProgressWheel:pwRimColor="#44000000"
+                    ProgressWheel:pwBarLength="60dp"
+                    ProgressWheel:pwBarColor="@color/cn_green"
+                    ProgressWheel:pwBarWidth="10dp"
+                    ProgressWheel:pwRimWidth="10dp"
+                    ProgressWheel:pwSpinSpeed="3dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

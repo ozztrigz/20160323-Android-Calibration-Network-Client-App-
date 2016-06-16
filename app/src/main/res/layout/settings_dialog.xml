@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_view"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter a new value and hit save to update this setting."
+        android:id="@+id/dialog_message"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/cn_green"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings_change_label"
+        android:textColorHint="@color/cn_green"
+        android:textColor="@color/primary_text_material_light"
+        android:layout_marginBottom="20dp"
+        android:textSize="14sp"
+        android:padding="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings_change_text"
+        android:hint="Enter your new value here"
+        android:textColor="@color/primary_text_material_light"
+        android:textColorHint="@color/cn_green"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/white_textfield"
+        android:layout_marginBottom="20dp"
+        android:textSize="14sp"
+        android:padding="10dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="update"
+            android:background="@drawable/green_button"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:id="@+id/dialogSettingsUpdateButton" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:background="@drawable/cancel_button_shape"
+            android:text="cancel"
+            android:id="@+id/dialogSettingsCancelButton" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

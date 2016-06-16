@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/instrument_itemID"
+        android:visibility="gone"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/first_row"
+        android:padding="10dp"
+        >
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textColor="@color/dark_grey"
+            android:layout_marginRight="20dp"
+            android:id="@+id/instrument_item_name_label"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cn_green"
+            android:text="New Text"
+            android:id="@+id/instrument_item_name" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/second_row"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_grey"
+            android:textSize="10sp"
+            android:text="Serial"
+            android:layout_marginRight="20dp"
+            android:id="@+id/instrument_item_serial_label" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textColor="@color/cn_green"
+            android:id="@+id/instrument_item_serial" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/third_row"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_grey"
+            android:textSize="10sp"
+            android:text="Asset"
+            android:layout_marginRight="20dp"
+            android:id="@+id/instrument_item_asset_label" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textColor="@color/cn_green"
+            android:id="@+id/instrument_item_asset" />
+
+    </LinearLayout>
+</LinearLayout>

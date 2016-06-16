@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Calibration Network Client</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_master">Tasks</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string-array name="status_array">
+        <item>--</item>
+        <item>received</item>
+        <item>assigned</item>
+        <item>being serviced</item>
+        <item>on hold</item>
+        <item>complete</item>
+    </string-array>
+
+    <string-array name="tasktype_array">
+        <item>--</item>
+        <item>traceable</item>
+        <item>17025</item>
+        <item>repair</item>
+        <item>maintenance</item>
+        <item>other</item>
+    </string-array>
+    <string name="title_activity_job_details">Job Details</string>
+    <string name="title_activity_task_details">Task Details</string>
+    <string name="title_activity_view_certificate">View Certificate</string>
+    <string name="title_activity_user_registration">User Registration</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="settings_instructions">To update your contact information or login information, simply tap on the appropriate row and follow directions.</string>
+    <string name="title_activity_instrument_details">InstrumentDetails</string>
+    <string name="title_activity_existing_user_registration">Existing User Registration</string>
+    <string name="title_activity_feedback">Feedback</string>
+    <string name="title_activity_cal_due_list">CalDueList</string>
+    <string name="cal_due_instructions">The following instruments are due for calibration within 30 days. Click the \"Request Calibration\" button to receive a quotation for the listed items or click the items individually to choose what to do. Please be sure to have your contact information up to date before sending your request.</string>
+    <string name="cal_due_single_instructions">This test instrument is due for calibration within 30 days. If you would like to have it calibrated by us, click the \"Request Calibration\" button to receive a quotation. If you prefer to ignore this notification click the \"ignore\" button. Finally if you would like to never be reminded again of calibrations due on this instrument, click \"disable notifications\".  Please be sure to have your contact information up to date before sending your request.</string>
+    <string name="cal_due_single_dialog_instructions">To request a calibration quotation, choose the type of calibration and then click the \"Request Calibration\" button. If you prefer to ignore this notification click the \"Ignore\" button. Finally if you would like to never be reminded again of calibrations due on this instrument, click \"Disable Notifications\".</string>
+</resources>

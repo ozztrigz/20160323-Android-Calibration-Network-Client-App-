@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ca.on.tradeport.calibrationnetwork.Feedback"
+    android:background="@drawable/bg_pattern"
+    tools:showIn="@layout/activity_feedback">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cn_logo_registration"
+            android:src="@drawable/cn_logo_white"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+
+            android:scaleType="fitCenter" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:text="If you have any feedback to send to us for anything related to this application, we would love to hear from you."
+            android:layout_marginBottom="20dp" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/feedbackText"
+            android:background="@drawable/white_textfield"
+
+            android:gravity="top|left"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/green_button"
+            android:padding="10dp"
+            android:id="@+id/sendFeedbackButton"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Feedback"
+                android:textColor="@color/primary_text_default_material_light"
+                android:id="@+id/sendFeedbackButtonText"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/cancel_search_bg"
+            android:padding="10dp"
+            android:id="@+id/cancelFeedbackButton"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:textColor="@color/primary_text_default_material_light"
+                android:id="@+id/cancelFeedbackButtonText"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+    </ScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/spinnerContainer"
+        android:alpha="0">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_grey"
+            android:alpha="0.5">
+
+        </RelativeLayout>
+
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+
+
+                <ca.on.tradeport.calibrationnetwork.ProgressWheel
+                    android:id="@+id/progressBarTwo"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    ProgressWheel:pwTextColor="#222222"
+                    ProgressWheel:pwTextSize="14sp"
+                    ProgressWheel:pwRimColor="#44000000"
+                    ProgressWheel:pwBarLength="60dp"
+                    ProgressWheel:pwBarColor="@color/cn_green"
+                    ProgressWheel:pwBarWidth="10dp"
+                    ProgressWheel:pwRimWidth="10dp"
+                    ProgressWheel:pwSpinSpeed="3dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

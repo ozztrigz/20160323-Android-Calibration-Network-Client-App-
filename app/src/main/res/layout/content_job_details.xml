@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ca.on.tradeport.calibrationnetwork.JobDetails"
+    tools:showIn="@layout/activity_job_details">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job Details"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/textJobDetails"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="back"
+            android:id="@+id/backButton"
+            android:background="@drawable/back_button_bg"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:layout_above="@+id/linearLayout"
+            android:layout_alignRight="@+id/linearLayout"
+            android:layout_alignEnd="@+id/linearLayout"
+            android:layout_marginRight="20dp" />
+
+
+        <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textJobDetails"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:background="@drawable/white_button"
+        android:id="@+id/linearLayout"
+        android:layout_marginTop="0dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Job Description Text Here"
+                android:textColor="@color/primary_text_material_light"
+                android:id="@+id/jobDetailsTitle"/>
+
+            <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Status" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date Created" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Status"
+                    android:textColor="#000000"
+                    android:id="@+id/jobDetailsStatus" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date Created"
+                    android:textColor="#000000"
+                    android:id="@+id/jobDetailsDateCreated" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attached Tasks"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="0dp"
+            android:id="@+id/textViewAttachedTasks"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/linearLayout"
+            />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/white_button"
+            android:id="@+id/linearLayout2"
+            android:layout_below="@+id/textViewAttachedTasks">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/attachedTasksListView"
+
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/spinnerContainer"
+            android:alpha="0"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/dark_grey"
+                android:alpha="0.5">
+
+            </RelativeLayout>
+
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+
+
+                    <ca.on.tradeport.calibrationnetwork.ProgressWheel
+                        android:id="@+id/progressBarTwo"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        ProgressWheel:pwTextColor="#222222"
+                        ProgressWheel:pwTextSize="14sp"
+                        ProgressWheel:pwRimColor="#44000000"
+                        ProgressWheel:pwBarLength="60dp"
+                        ProgressWheel:pwBarColor="@color/cn_green"
+                        ProgressWheel:pwBarWidth="10dp"
+                        ProgressWheel:pwRimWidth="10dp"
+                        ProgressWheel:pwSpinSpeed="3dp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/footer_shape">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="8">
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/logout_footer_button"
+                android:background="@drawable/logout_button_shape"
+                android:weightSum="4"
+                android:layout_margin="10dp">
+                <ImageView
+                    android:adjustViewBounds="true"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:tint="@color/cn_green"
+                    android:src="@drawable/ic_error_outline_black_24dp"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="match_parent"
+                    android:text="logout"
+                    android:textColor="@color/light_grey"
+                    android:gravity="center"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="0dp"
+
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/cn_logo_white"
+                android:layout_weight="6" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

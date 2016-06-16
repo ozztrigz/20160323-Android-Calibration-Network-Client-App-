@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ca.on.tradeport.calibrationnetwork.CalDueList">
+    <item
+        android:id="@+id/action_calibrate"
+        android:orderInCategory="100"
+        android:title="Calibrate this Instrument"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_remove"
+        android:orderInCategory="100"
+        android:title="Disable notifications for this test tool"
+        app:showAsAction="never" />
+</menu>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/masterCoordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/bg_pattern"
+    tools:context="ca.on.tradeport.calibrationnetwork.MasterActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/primary_text_material_light"
+        android:id="@+id/toolbar_container">
+
+
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/primary_text_material_light"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:elevation="6dp"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/toolbar_container">
+
+        <android.support.v4.view.ViewPager
+            android:layout_marginTop="0dp"
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/footer_shape">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="8">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/logout_footer_button"
+                    android:background="@drawable/logout_button_shape"
+                    android:weightSum="4"
+                    android:layout_margin="10dp"
+                    android:paddingLeft="10dp">
+                    <ImageView
+                        android:adjustViewBounds="true"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:tint="@color/cn_green"
+                        android:src="@drawable/ic_error_outline_black_24dp"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="match_parent"
+                        android:text="logout"
+                        android:textColor="@color/light_grey"
+                        android:gravity="center"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:adjustViewBounds="true"
+                    android:id="@+id/footer_logo_image"
+                    android:src="@drawable/cn_logo_white"
+                    android:layout_weight="6" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/search_footer_button"
+                    android:background="@drawable/footer_search_button_shape"
+                    android:weightSum="4"
+                    android:visibility="gone"
+                    android:layout_margin="10dp"
+                    android:paddingLeft="10dp">
+
+                    <ImageView
+                        android:adjustViewBounds="true"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:id="@+id/footer_search_icon"
+                        android:tint="#ffffff"
+                        android:src="@drawable/ic_action_search"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="match_parent"
+                        android:text="search"
+                        android:textColor="@color/foreground_material_light"
+                        android:gravity="center"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/spinnerContainer"
+        android:alpha="0"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_grey"
+            android:alpha="0.5">
+
+        </RelativeLayout>
+
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+
+
+                <ca.on.tradeport.calibrationnetwork.ProgressWheel
+                    android:id="@+id/progressBarTwo"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    ProgressWheel:pwTextColor="#222222"
+                    ProgressWheel:pwTextSize="14sp"
+                    ProgressWheel:pwRimColor="#44000000"
+                    ProgressWheel:pwBarLength="60dp"
+                    ProgressWheel:pwBarColor="@color/cn_green"
+                    ProgressWheel:pwBarWidth="10dp"
+                    ProgressWheel:pwRimWidth="10dp"
+                    ProgressWheel:pwSpinSpeed="3dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

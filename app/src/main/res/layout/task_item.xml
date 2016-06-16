@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/first_row"
+        android:padding="10dp"
+        >
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="Cert"
+            android:textColor="@color/dark_grey"
+            android:layout_marginRight="20dp"
+            android:id="@+id/cert_label"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cn_green"
+            android:text="New Text"
+            android:id="@+id/cert_text" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/second_row"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_grey"
+            android:textSize="10sp"
+            android:text="Model"
+            android:layout_marginRight="20dp"
+            android:id="@+id/model_label" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textColor="@color/cn_green"
+            android:id="@+id/model_text" />
+
+    </LinearLayout>
+</LinearLayout>
