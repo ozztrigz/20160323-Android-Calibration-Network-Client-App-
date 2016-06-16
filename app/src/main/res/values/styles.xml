@@ -7,6 +7,8 @@
         <item name="colorPrimaryDark">#aeaeae</item>
         <item name="colorAccent">@color/cn_green</item>
         <item name="android:textColorPrimary">#fff</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowExitTransition">@transition/card_exit</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

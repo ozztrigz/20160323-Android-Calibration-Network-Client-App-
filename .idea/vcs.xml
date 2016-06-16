@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/20160323-Android-Calibration-Network-Client-App-" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Android-Calibration-Network-Client-App" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Calibration-Network" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Calibration-Network-Client" vcs="Git" />
   </component>
 </project>

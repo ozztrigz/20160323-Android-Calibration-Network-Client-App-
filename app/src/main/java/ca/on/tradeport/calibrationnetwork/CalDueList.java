@@ -107,6 +107,9 @@ public class CalDueList extends AppCompatActivity {
         });
 
         */
+
+
+
         recyclerView = (RecyclerView) findViewById(R.id.newList);
         calDueAdapter = new CalDueAdapter(this);
         recyclerView.setAdapter(calDueAdapter);
