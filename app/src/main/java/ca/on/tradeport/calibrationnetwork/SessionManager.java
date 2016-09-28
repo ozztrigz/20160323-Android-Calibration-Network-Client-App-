@@ -24,10 +24,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -160,15 +161,19 @@ public class SessionManager {
 
             loginToCalValue = params[4];
 
+            TimeZone tz = TimeZone.getDefault();
+            String tzid = tz.getID();
 
             RequestBody formBody = new FormBody.Builder()
                     .add("username", params[0])
                     .add("password", params[1])
                     .add("oneSignalUserID", params[2])
                     .add("deviceID", params[3])
+                    .add("tz", tzid)
                     .add("tag", "login")
                     .build();
 
+            Log.i("testing_data", params[0]+" || "+params[1]+" || "+params[2]+" || "+params[3]);
 
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder().url(loginURL).post(formBody).build();
@@ -455,6 +460,9 @@ public class SessionManager {
         @Override
         protected String doInBackground(String... params) {
 
+            TimeZone tz = TimeZone.getDefault();
+            String tzid = tz.getID();
+
             SQLiteDatabase sessionDB = context.openOrCreateDatabase("Sessions", Context.MODE_PRIVATE, null);
             sessionDB.execSQL("CREATE TABLE IF NOT EXISTS failed_logout_sessions (id INTEGER PRIMARY KEY, username VARCHAR, key VARCHAR)");
 
@@ -465,6 +473,7 @@ public class SessionManager {
             RequestBody formBody = new FormBody.Builder()
                     .add("username", mUsername)
                     .add("key", mKey)
+                    .add("tz", tzid)
                     .add("tag", "update_session")
                     .build();
 
@@ -615,15 +624,18 @@ public class SessionManager {
         sharedPreferences = context.getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
         String expired = sharedPreferences.getString("expire", "");
         Long tsLong = System.currentTimeMillis()/1000;
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date testDate = null;
+        Locale locale = Locale.getDefault();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", locale);
+        formatter.setLenient(false);
 
-        Log.i("testing_expired", expired);
 
         try {
-            Date expireTimeStamp = formatter.parse(expired);
+
+            testDate = formatter.parse(expired);
             Date currentTimeStamp = new Date();
 
-            if(expireTimeStamp.before(currentTimeStamp)){
+            if(testDate.before(currentTimeStamp)){
 
 
 

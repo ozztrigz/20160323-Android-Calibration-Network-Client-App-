@@ -49,56 +49,28 @@
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_weight="0.6"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Request Calibration"
-                    android:background="@drawable/green_button"
+                    android:text="Request Quotation"
+                    android:background="@drawable/request_calibration_button_bg"
                     android:textAllCaps="false"
                     android:textColor="#ffffff"
                     android:id="@+id/dialogRequestCalibrationButton" />
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_weight="0.4"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Ignore"
-                    android:background="@drawable/green_button"
-                    android:layout_marginLeft="10dp"
                     android:textAllCaps="false"
                     android:textColor="#ffffff"
-                    android:id="@+id/dialogRequestCalibrationIgnoreButton" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="0.6"
-                    android:layout_height="wrap_content"
-                    android:text="Disable Notifications"
-                    android:background="@drawable/green_button"
-                    android:textAllCaps="false"
-                    android:textColor="#ffffff"
-                    android:id="@+id/dialogRequestCalibrationDisableButton" />
-
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="0.4"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textAllCaps="false"
-                    android:textColor="#ffffff"
-                    android:background="@drawable/cancel_button_shape"
+                    android:background="@drawable/ignore_calibration_due_button_bg"
                     android:text="cancel"
                     android:id="@+id/dialogRequestCalibrationCancelButton" />
 
+
             </LinearLayout>
+
+
         </LinearLayout>
 
     </ScrollView>

@@ -22,7 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.onesignal.OneSignal;
+import com.onesignal.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +36,8 @@ public class Login extends AppCompatActivity {
     public Context context;
 
     ProgressWheel pwOne;
+
+
 
     private static boolean activityStarted;
     private static String MY_LOGIN_PREFS = "credentials";
@@ -68,22 +70,27 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.DEBUG, OneSignal.LOG_LEVEL.WARN);
-        OneSignal.enableInAppAlertNotification(true);
+
         OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
+
             @Override
             public void idsAvailable(String userId, String registrationId) {
+
                 oneSignalUser = userId;
                 if (registrationId != null)
                     regID = registrationId;
+                Log.i("testing_one", oneSignalUser+ " || "+regID );
             }
         });
 
         OneSignal.startInit(this)
-                .setAutoPromptLocation(true)
-                .setNotificationOpenedHandler(new NotificationOpenedHandler())
+                .setNotificationOpenedHandler(new MyNotificationOpened())
+                .autoPromptLocation(true)
                 .init();
+
+
+
 /*
 
         if (activityStarted
@@ -131,7 +138,7 @@ public class Login extends AppCompatActivity {
             }
         }
 
-        Log.i("testingData", additionalNotificationData);
+
 
     }
 
@@ -175,6 +182,7 @@ public class Login extends AppCompatActivity {
                 lgTask = new SessionManager(this, spinnerContainer, coordinatorLayout).new LoginBackground();
 
                 SQLiteDatabase instrumentsdb = this.openOrCreateDatabase("Instruments", Context.MODE_PRIVATE, null);
+                instrumentsdb.execSQL("CREATE TABLE IF NOT EXISTS instrumentsDueForCal (id INTEGER PRIMARY KEY, instrumentID VARCHAR)");
                 Cursor c = instrumentsdb.rawQuery("SELECT * FROM instrumentsDueForCal", null);
 
                 if(c != null && c.getCount() > 0) {
@@ -210,7 +218,6 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
 
         Log.i("testing_methods", "onresume");
         Log.i("testing_methods", "logintocal " + String.valueOf(loginToCal));
@@ -285,14 +292,17 @@ public class Login extends AppCompatActivity {
 
 
 
-    private class NotificationOpenedHandler implements OneSignal.NotificationOpenedHandler {
 
+
+    public class MyNotificationOpened implements OneSignal.NotificationOpenedHandler {
         @Override
-        public void notificationOpened(String message, JSONObject additionalData, boolean isActive) {
-            Log.e("OneSignalExample", "message: " + message);
-            Log.e("OneSignalExample", "additional data: " + additionalData);
+        public void notificationOpened(OSNotificationOpenResult result) {
+
+
+            Log.e("OneSignalExample", "message: " + result.notification.payload.body);
+            Log.e("OneSignalExample", "additional data: " + result.notification.payload.additionalData);
             loginToCal = 1;
-            additionalNotificationData = additionalData.toString();
+            additionalNotificationData = result.notification.payload.additionalData.toString();
             SQLiteDatabase instrumentsDB = Login.this.openOrCreateDatabase("Instruments", Context.MODE_PRIVATE,null);
             instrumentsDB.execSQL("CREATE TABLE IF NOT EXISTS instrumentsDueForCal (id INTEGER PRIMARY KEY, instrumentID VARCHAR)");
             instrumentsDB.execSQL("DELETE FROM instrumentsDueForCal");
@@ -302,7 +312,7 @@ public class Login extends AppCompatActivity {
             String sql = "INSERT INTO instrumentsDueForCal (instrumentID) VALUES (?)";
 
             try {
-                JSONArray jsonArray = additionalData.getJSONArray("instruments");
+                JSONArray jsonArray = result.notification.payload.additionalData.getJSONArray("instruments");
                 JSONArray instrumentArray = jsonArray.getJSONArray(0);
 
                 for(int i = 0; i < instrumentArray.length(); i++){
@@ -322,17 +332,10 @@ public class Login extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
+            Log.i("testing_onesignal", result.toString());
         }
 
     }
-
-
 }
 
 

@@ -9,16 +9,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -38,7 +41,7 @@ import okhttp3.Response;
 public class CalDueList extends AppCompatActivity {
 
 
-    private RecyclerView recyclerView;
+    private ListView calDueListView;
     public static String MY_PREFS_NAME = "session";
     private static String grabInstrumentsInfoURL = "http://com.tradeport.on.ca/view_instruments_due_for_calibration.php";
     private static String calibrationRequestForAllURL = "http://com.tradeport.on.ca/send_calibration_request_for_all_instruments.php";
@@ -46,26 +49,26 @@ public class CalDueList extends AppCompatActivity {
     private static String disableNotificationForSingleURL = "http://com.tradeport.on.ca/disable_notification_for_single_instrument.php";
     private static String ignoreNotificationForSingleURL = "http://com.tradeport.on.ca/ignore_notification_for_single_instrument.php";
     public SessionManager sessionManager;
-    public CalibrationDueAdapter adapter;
+
     public ProgressWheel pwOne;
     public RelativeLayout spinnerContainer;
     public String error_message;
     public String singleCalInstrumentID = "";
     public String singleCalType = "";
     private CalDueAdapter calDueAdapter;
+    private LinearLayout expandedView;
+    private Object toRemove;
 
-    ArrayList<Instrument> instruments = new ArrayList<>();
+
+    public ArrayList<Instrument> instruments = new ArrayList<>();
     RequestBody formBody;
     SharedPreferences sharedPreferences;
     RelativeLayout requestCalibrationButton;
-    ListView calDueLV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cal_due_list);
-
-
 
         sessionManager = new SessionManager(this);
 
@@ -75,9 +78,80 @@ public class CalDueList extends AppCompatActivity {
         pwOne = (ProgressWheel) findViewById(R.id.progressBarTwo);
         pwOne.startSpinning();
 
-        /*
-        calDueLV = (ListView) findViewById(R.id.calDueListView);
-        requestCalibrationButton = (RelativeLayout) findViewById(R.id.requestAllCalibrationButton);
+        calDueListView = (ListView) findViewById(R.id.calDueListView);
+        calDueAdapter = new CalDueAdapter(this, instruments);
+        calDueListView.setAdapter(calDueAdapter);
+
+        calDueListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(final AdapterView<?> adapterView, final View view, int i, long l) {
+
+                toRemove = calDueAdapter.getItem(i);
+
+                //check if expandedView is not null
+                if(expandedView != null){
+
+                    //are we clicking the same row?!?!
+                    if(expandedView != view.findViewById(R.id.fourth_row)) {
+
+                        collapse(expandedView, false);
+
+                        //update the expanded view
+                        expandedView = (LinearLayout) view.findViewById(R.id.fourth_row);
+                        expand(expandedView);
+
+                        //let's not forget to update the id for this expanded view
+                        singleCalInstrumentID = ((TextView) view.findViewById(R.id.instrument_itemID)).getText().toString();
+                    } else {
+
+                        //reset the board
+                        collapse(expandedView, false);
+
+                        expandedView = null;
+                        singleCalInstrumentID = null;
+                    }
+
+
+                } else {
+
+                    // if expandedView is null, everything should be already closed so lets open this view and set its view to expandedView
+                    expandedView = (LinearLayout) view.findViewById(R.id.fourth_row);
+                    expand(expandedView);
+
+                    //let's not forget to get the id for this expanded view
+                    singleCalInstrumentID = ((TextView) view.findViewById(R.id.instrument_itemID)).getText().toString();
+
+                }
+
+                Button requestSingleCalButton = (Button) view.findViewById(R.id.requestSingleCalibrationButton);
+                Button ignoreSingleCalDueDateButton = (Button) view.findViewById(R.id.ignoreSingleCalDueDateButton);
+
+                requestSingleCalButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        chooseCalibrationAction();
+
+                    }
+                });
+
+                ignoreSingleCalDueDateButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        IgnoreNotificationForSingleInstrument ignoreNotificationForSingleInstrument = new IgnoreNotificationForSingleInstrument();
+                        ignoreNotificationForSingleInstrument.execute();
+
+                        collapse(expandedView, true);
+                    }
+                });
+
+
+
+            }
+        });
+
+
+        requestCalibrationButton= (RelativeLayout) findViewById(R.id.requestAllCalibrationButton);
 
         requestCalibrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,37 +163,96 @@ public class CalDueList extends AppCompatActivity {
             }
         });
 
-        adapter = new CalibrationDueAdapter(this, instruments);
-        calDueLV.setAdapter(adapter);
-
-        registerForContextMenu(calDueLV);
-
-        calDueLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                TextView instrumentID = (TextView) view.findViewById(R.id.instrument_itemID);
-                singleCalInstrumentID = instrumentID.getText().toString();
-                chooseCalibrationAction();
-
-            }
-
-        });
-
-        */
-
-
-
-        recyclerView = (RecyclerView) findViewById(R.id.newList);
-        calDueAdapter = new CalDueAdapter(this);
-        recyclerView.setAdapter(calDueAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
         GetInstruments getInstruments = new GetInstruments();
         getInstruments.execute();
 
+    }
 
+
+    public static void expand(final View v) {
+        v.measure(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        final int targetHeight = v.getMeasuredHeight();
+
+        // Older versions of android (pre API 21) cancel animations for views with a height of 0.
+        v.getLayoutParams().height = 1;
+        v.setVisibility(View.VISIBLE);
+        Animation a = new Animation()
+        {
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                v.getLayoutParams().height = interpolatedTime == 1
+                        ? LinearLayout.LayoutParams.WRAP_CONTENT
+                        : (int)(targetHeight * interpolatedTime);
+                v.requestLayout();
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+
+
+        };
+
+        // 1dp/ms
+        a.setDuration(300);
+        v.startAnimation(a);
+
+    }
+
+
+
+
+    public void collapse(final View v, final Boolean isRemove) {
+        final int initialHeight = v.getMeasuredHeight();
+
+
+        Animation a = new Animation()
+        {
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                if(interpolatedTime == 1){
+                    v.setVisibility(View.GONE);
+                }else{
+                    v.getLayoutParams().height = initialHeight - (int)(initialHeight * interpolatedTime);
+                    v.requestLayout();
+                }
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+
+
+        };
+
+
+        a.setDuration(200);
+        v.startAnimation(a);
+        a.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                if(toRemove != null && isRemove) {
+                    instruments.remove(toRemove);
+                    calDueAdapter.notifyDataSetChanged();
+                    expandedView = null;
+                    singleCalInstrumentID = null;
+                    toRemove = null;
+                }
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
 
     }
 
@@ -143,8 +276,6 @@ public class CalDueList extends AppCompatActivity {
         calType.setAdapter(adapter);
 
         Button requestCalibrationButton = (Button) dialog.findViewById(R.id.dialogRequestCalibrationButton);
-        final Button ignoreCalibrationButton = (Button) dialog.findViewById(R.id.dialogRequestCalibrationIgnoreButton);
-        Button disableCalibrationButton = (Button) dialog.findViewById(R.id.dialogRequestCalibrationDisableButton);
         Button dismissCalibrationButton = (Button) dialog.findViewById(R.id.dialogRequestCalibrationCancelButton);
 
             requestCalibrationButton.setOnClickListener(new View.OnClickListener() {
@@ -169,26 +300,6 @@ public class CalDueList extends AppCompatActivity {
                 }
             });
 
-        disableCalibrationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                DisableNotificationForSingleInstrument disableNotificationForSingleInstrument = new DisableNotificationForSingleInstrument();
-                disableNotificationForSingleInstrument.execute();
-                dialog.dismiss();
-
-            }
-        });
-
-        ignoreCalibrationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IgnoreNotificationForSingleInstrument ignoreNotificationForSingleInstrument = new IgnoreNotificationForSingleInstrument();
-                ignoreNotificationForSingleInstrument.execute();
-                dialog.dismiss();
-            }
-        });
-
             dismissCalibrationButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -197,6 +308,8 @@ public class CalDueList extends AppCompatActivity {
             });
 
             dialog.show();
+
+
     }
 
     public class GetInstruments extends AsyncTask<String, String, String> {
@@ -331,8 +444,7 @@ public class CalDueList extends AppCompatActivity {
                 return;
             }
 
-           // calDueAdapter.notifyDataSetChanged();
-            calDueAdapter.setInstrumentList(instruments);
+            calDueAdapter.notifyDataSetChanged();
 
         }
     }
@@ -543,7 +655,7 @@ public class CalDueList extends AppCompatActivity {
                 return;
             }
 
-            adapter.notifyDataSetChanged();
+            collapse(expandedView, true);
 
 
         }
@@ -645,7 +757,7 @@ public class CalDueList extends AppCompatActivity {
                 return;
             }
 
-            adapter.notifyDataSetChanged();
+            calDueAdapter.notifyDataSetChanged();
         }
     }
 
@@ -746,7 +858,7 @@ public class CalDueList extends AppCompatActivity {
                 return;
             }
 
-            adapter.notifyDataSetChanged();
+            calDueAdapter.notifyDataSetChanged();
 
 
         }

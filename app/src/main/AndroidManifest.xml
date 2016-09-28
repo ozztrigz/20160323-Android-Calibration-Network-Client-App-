@@ -54,6 +54,7 @@
             android:label="@string/title_activity_instrument_details"
             android:theme="@style/AppTheme" />
         <activity android:name=".RegisterChoices" />
+
         <activity
             android:name=".ExistingUserRegistration"
             android:label="@string/title_activity_existing_user_registration"

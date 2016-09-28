@@ -34,8 +34,10 @@
     <string name="title_activity_instrument_details">InstrumentDetails</string>
     <string name="title_activity_existing_user_registration">Existing User Registration</string>
     <string name="title_activity_feedback">Feedback</string>
+    <string name="title_activity_cal_due_details">Calibration Due Details</string>
     <string name="title_activity_cal_due_list">CalDueList</string>
     <string name="cal_due_instructions">The following instruments are due for calibration within 30 days. Click the \"Request Calibration\" button to receive a quotation for the listed items or click the items individually to choose what to do. Please be sure to have your contact information up to date before sending your request.</string>
     <string name="cal_due_single_instructions">This test instrument is due for calibration within 30 days. If you would like to have it calibrated by us, click the \"Request Calibration\" button to receive a quotation. If you prefer to ignore this notification click the \"ignore\" button. Finally if you would like to never be reminded again of calibrations due on this instrument, click \"disable notifications\".  Please be sure to have your contact information up to date before sending your request.</string>
     <string name="cal_due_single_dialog_instructions">To request a calibration quotation, choose the type of calibration and then click the \"Request Calibration\" button. If you prefer to ignore this notification click the \"Ignore\" button. Finally if you would like to never be reminded again of calibrations due on this instrument, click \"Disable Notifications\".</string>
+    <string name="request_calibration">request calibration</string>
 </resources>

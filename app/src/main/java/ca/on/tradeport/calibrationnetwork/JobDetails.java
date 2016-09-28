@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.TimeZone;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -151,6 +152,9 @@ public class JobDetails extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
+            TimeZone tz = TimeZone.getDefault();
+            String tzid = tz.getID();
+
             SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
             String userID = prefs.getString("userID", null);
             String key = prefs.getString("session_key", null);
@@ -163,6 +167,7 @@ public class JobDetails extends AppCompatActivity {
                     .add("uid", userID)
                     .add("key", key)
                     .add("tag", "view_attached_tasks")
+                    .add("tz", tzid)
                     .add("jobID", jobID)
                     .build();
 

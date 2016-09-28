@@ -34,10 +34,10 @@
         android:layout_above="@+id/requestAllCalibrationButton"
         android:background="@drawable/white_button">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/newList"
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:id="@+id/calDueListView" />
 
 
     </RelativeLayout>
@@ -56,7 +56,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="request calibration"
+            android:text="@string/request_calibration"
             android:textColor="@color/primary_text_default_material_light"
             android:id="@+id/feedbackButtonText"
             android:layout_alignParentTop="true"
